@@ -1,0 +1,202 @@
+<!DOCTYPE HTML>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id='wrapper'>
+	<div id='container'>
+		<div id="column_0">
+			<h3>Instructions</h3>
+			<ul>
+				<li>Use Q, W, and E to conjure orbs (Q for Quas, W for Wex, E for Exort)</li>
+				<li>Press R to invoke your spell based on your orb configuration</li>
+			</ul>
+		</div>
+		<div id="column_1">
+			<div id='title'><h1>Invoker Practice</h1></div>
+			<table width=500>
+				<tr>
+					<th>Quas</th>
+					<th>Wex</th>
+					<th>Exort</th>
+					<th>Invoke</th>
+				</tr>
+				<br />
+				<br />
+				<tr>
+					<td><img id='quasOrb' src="img/Quas.PNG"></td>
+					<td><img id='wexOrb' src="img/Wex.PNG"></td>
+					<td><img id='exortOrb' src="img/Exort.PNG"></td>
+					<td><img id='invoke' src="img/Invoke.PNG"></td>
+				</tr>
+				<tr>
+					<td><img id="orb0" class='orb' src="img/Wex.PNG"></td>
+					<td><img id="orb1" class='orb' src="img/Quas.PNG"></td>
+					<td><img id="orb2" class='orb' src="img/Quas.PNG"></td>
+				</tr>
+			</table>
+			<br />
+			<br />
+			<table>
+				<tr>
+					<th id='spell_0_name'></th>
+					<th id='spell_1_name'></th>
+				<tr>
+					<td><img id="spell_0" src="img/Empty_Spell.PNG" width=124></td>
+					<td><img id="spell_1" src="img/Empty_Spell.PNG" width=124></td>
+				</tr>
+			</table>
+		</div>
+		<div id='column_2'>
+			<ul>
+				<li><img src='img/ColdSnap.PNG'>Coldsnap: Q, Q, Q</li>
+				<li><img src='img/Tornado.PNG'>Tornado: Q, Q, W</li>
+				<li><img src='img/GhostWalk.PNG'>Ghost Walk: Q, W, W</li>
+				<li><img src='img/EMP.PNG'>EMP: W, W, W</li>
+				<li><img src='img/Alacrity.PNG'>Alacrity: W, W, E</li>
+				<li><img src='img/Meteor.PNG'>Meteor: E, E, W</li>
+				<li><img src='img/IceWall.PNG'>Ice Wall: Q, Q, E</li>
+				<li><img src='img/Forge Spirit.PNG'>Forge Spirits: Q, E, E</li>
+				<li><img src='img/Sunstrike.PNG'>Stun Strike: E, E, E</li>
+				<li><img src='img/Deafening Blast.PNG'>Deafening Blast: Q, W, E</li>
+			</ul>	
+		</div>
+	</div>
+</div>
+</body>
+<script>
+        var quas = "img/Quas.PNG";
+        var wex = "img/Wex.PNG";
+        var exort = "img/Exort.PNG";
+        var orbOrder = [0, 0, 0];
+        
+        var o0 = document.getElementById('orb0');
+        var o1 = document.getElementById('orb1');
+        var o2 = document.getElementById('orb2');
+		
+		var s0 = document.getElementById('spell_0');
+		var s1 = document.getElementById('spell_1');
+		
+		var s0name = document.getElementById('spell_0_name');
+		var s1name = document.getElementById('spell_1_name');
+        
+		var qOrb = document.getElementById('quasOrb');
+		var wOrb = document.getElementById('wexOrb');
+		var eOrb = document.getElementById('exortOrb');
+		
+		var newSpellName = '';
+		var oldSpellName = '';
+		
+		document.onkeypress = function(){
+			
+			var key = String.fromCharCode(event.charCode);
+			key = key.toLowerCase();
+			var trigger = false;
+			
+			if(window.event){
+				ch = key;
+			}
+			else if(event.which){
+				ch = key;
+			}
+			
+			switch(ch){
+				case 'q': 
+					orbChange(ch);
+					break;
+				case 'w':
+					orbChange(ch);
+					break;
+				case 'e':
+					orbChange(ch);
+					break;
+				case 'r':
+					invoke(orbOrder);
+					break;
+				default:
+					break;
+			}
+		}
+		
+		function orbChange(orb) {
+		
+			var newOrb;
+			
+			if(orb == 'q') {
+				orbOrder.shift();
+				orbOrder[2] = 0;
+				newOrb = quas;
+			}
+			else if(orb == 'w') {
+				orbOrder.shift();
+				orbOrder[2] = 1;
+				newOrb = wex;
+			}
+			else if(orb == 'e') {
+				orbOrder.shift();
+				orbOrder[2] = 2;
+				newOrb = exort;
+			}
+                                       
+			o0.src = o1.src;
+			o1.src = o2.src;
+            o2.src = newOrb;  
+		}
+		
+		function invoke(orbs) {
+			var quasCount = 0;
+			var wexCount = 0;
+			var exortCount = 0;
+			
+			oldSpellName = newSpellName;
+			
+			for (var x = 0; x < 3; x++) {
+				if (orbs[x] === 0) {
+					quasCount++;
+				}
+				else if(orbs[x] === 1) {
+					wexCount++;
+				}
+				else if(orbs[x] === 2) {
+					exortCount++;
+				}
+			}
+									
+			if (quasCount === 3)
+				newSpellName = 'Coldsnap';
+			else if (quasCount === 2) {
+				if (wexCount === 1)
+					newSpellName = 'Tornado';
+				else
+					newSpellName = 'Icewall';
+			}
+			else if (quasCount === 1) {
+				if (wexCount === 2)
+					newSpellName = 'Ghostwalk';
+				else if (exortCount === 2)
+					newSpellName = 'Forge Spirit';
+				else if (wexCount === 1)
+					newSpellName = 'Deafening Blast';
+			}
+			else if (quasCount === 0) {
+				if (wexCount === 1)
+					newSpellName = 'Meteor';
+				else if (wexCount === 2)
+					newSpellName = 'Alacrity';
+				else if (wexCount === 3)
+					newSpellName = 'EMP';
+				else 
+					newSpellName = 'Sunstrike';
+			}
+						
+			if (newSpellName != oldSpellName) {
+				s1.src = s0.src;
+				s1name.innerHTML = oldSpellName;
+				
+				s0.src = 'img/' + newSpellName + '.PNG';
+				s0name.innerHTML = newSpellName;
+			}	
+			
+		}
+</script>
+</HTML>
