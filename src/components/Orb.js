@@ -1,11 +1,15 @@
-import React from 'react';
+const { Component } = require('react');
 
-const Orb = (props) => {
-    let orb = props.orb;
-    let icon = `/img/${orb.img}`;
-    return (
+class Orb extends Component {
+    constructor(props) {
+        super(props);
+        this.orb = props.orb;
+    }
+    
+    render() { 
+        let icon = `/img/${orb.img}`;
         <img className="Orb" src={icon} alt={orb.img} />
-    );
+    };
 }
 
 export default Orb;

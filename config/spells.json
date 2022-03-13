@@ -1,0 +1,84 @@
+{
+    "spells" : [
+        {
+            "name": "Cold Snap",
+            "components" : {
+                "q": 3,
+                "w": 0,
+                "e": 0
+            }
+        },
+        {
+            "name" : "Ghost Walk",
+            "components" : {
+                "q:" : 2,
+                "w:" : 1,
+                "e:" : 0
+            }
+        },
+        {
+            "name" : "Ice Wall",
+            "components" : {
+                "q:" : 2,
+                "w:" : 0,
+                "e:" : 1
+            }
+        },
+        {
+            "name" : "EMP",
+            "components" : {
+                "q:" : 0,
+                "w:" : 3,
+                "e:" : 0
+            }
+        },
+        {
+            "name" : "Tornado",
+            "components" : {
+                "q:" : 1,
+                "w:" : 2,
+                "e:" : 0
+            }
+        },
+        {
+            "name" : "Alacrity",
+            "components" : {
+                "q:" : 0,
+                "w:" : 2,
+                "e:" : 1
+            }
+        },
+        {
+            "name" : "Sunstrike",
+            "components" : {
+                "q:" : 0,
+                "w:" : 0,
+                "e:" : 3
+            }
+        },
+        {
+            "name" : "Forge Spirit",
+            "components" : {
+                "q:" : 1,
+                "w:" : 0,
+                "e:" : 2
+            }
+        },
+        {
+            "name" : "Chaos Meteor",
+            "components" : {
+                "q:" : 0,
+                "w:" : 1,
+                "e:" : 2
+            }
+        },
+        {
+            "name" : "Deafening Blast",
+            "components" : {
+                "q:" : 1,
+                "w:" : 1,
+                "e:" : 1
+            }
+        }
+    ]
+}
