@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+const React, { useState } = require('react');
+const Trainer = require('components/Trainer');
+
 import './App.scss';
-import Trainer from './components/Trainer'
 
 function App() {
     return (
